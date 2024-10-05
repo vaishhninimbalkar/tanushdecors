@@ -73,119 +73,42 @@
 		
 
 		 <!-- Cart Section -->
-		 <div class="container">
-			<h2>Your Cart</h2>
-			<table class="table">
-			  <thead>
-				<tr>
-				  <th class="product-thumbnail">Image</th>
-				  <th class="product-name">Product</th>
-				  <th class="product-price">Price</th>
-				  <th class="product-quantity">Quantity</th>
-				  <th class="product-total">Total</th>
-				  <th class="product-remove">Remove</th>
-				</tr>
-			  </thead>
-			  <tbody id="cart-items">
-				<!-- Cart items will be injected here by JavaScript -->
-			  </tbody>
-			</table>
-		  </div>
+<div class="container">
+    <h2>Your Cart</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th class="product-thumbnail">Image</th>
+                <th class="product-name">Product</th>
+                <th class="product-price">Price</th>
+                <th class="product-quantity">Quantity</th>
+                <th class="product-total">Total</th>
+                <th class="product-remove">Remove</th>
+                <th class="product-buy">Buy Now</th> <!-- New column for Buy Now button -->
+            </tr>
+        </thead>
+        <tbody id="cart-items">
+            <!-- Cart items will be injected here by JavaScript -->
+        </tbody>
+    </table>
+</div>
 		
 		  <!-- JavaScript to load cart items from localStorage -->
-		  <script>
-			// Function to render the cart items from localStorage
-			function renderCart() {
-			  const cartItemsContainer = document.getElementById('cart-items');
-			  cartItemsContainer.innerHTML = ''; // Clear the current cart display
-		
-			  // Get cart from localStorage or set it to an empty array
-			  const cart = JSON.parse(localStorage.getItem('cart')) || [];
-		
-			  cart.forEach(item => {
-				const total = item.price * item.quantity;
-				const row = `
-				  <tr>
-					<td><img src="${item.image}" class="img-fluid" style="width: 50px;"></td>
-					<td>${item.name}</td>
-					<td>$${item.price}</td>
-					<td>${item.quantity}</td>
-					<td>$${total}</td>
-					<td><button class="btn btn-danger" onclick="removeFromCart('${item.name}')">Remove</button></td>
-				  </tr>
-				`;
-				cartItemsContainer.insertAdjacentHTML('beforeend', row);
-			  });
-			}
-		
-			// Function to remove product from cart
-			function removeFromCart(name) {
-			  let cart = JSON.parse(localStorage.getItem('cart')) || [];
-			  cart = cart.filter(item => item.name !== name); // Remove the item
-			  localStorage.setItem('cart', JSON.stringify(cart)); // Update localStorage
-			  renderCart(); // Re-render the cart
-			}
-		
-			// Call renderCart when the page loads
-			document.addEventListener('DOMContentLoaded', renderCart);
-		  </script>
+		 
         
-              <!-- <div class="row">
-                <div class="col-md-6">
-                  <div class="row mb-5">
-                    <div class="col-md-6 mb-3 mb-md-0">
-                      <button class="btn btn-black btn-sm btn-block">Update Cart</button>
-                    </div> -->
-                    
-                  <!-- <div class="row">
-                    <div class="col-md-12">
-                      <label class="text-black h4" for="coupon">Coupon</label>
-                      <p>Enter your coupon code if you have one.</p>
-                    </div>
-                    <div class="col-md-8 mb-3 mb-md-0">
-                      <input type="text" class="form-control py-3" id="coupon" placeholder="Coupon Code">
-                    </div>
-                    <div class="col-md-4">
-                      <button class="btn btn-black">Apply Coupon</button>
-                    </div>
-                  </div>
-                </div> -->
-                <!-- <div class="col-md-6 pl-5">
-                  <div class="row justify-content-end">
-                    <div class="col-md-7">
-                      <div class="row">
-                        <div class="col-md-12 text-right border-bottom mb-5">
-                          <h3 class="text-black h4 text-uppercase">Cart Totals</h3>
-                        </div>
-                      </div>
-                      <div class="row mb-3">
-                        <div class="col-md-6">
-                          <span class="text-black">Subtotal</span>
-                        </div>
-                        <div class="col-md-6 text-right">
-                          <strong class="text-black">$230.00</strong>
-                        </div>
-                      </div>
-                      <div class="row mb-5">
-                        <div class="col-md-6">
-                          <span class="text-black">Total</span>
-                        </div>
-                        <div class="col-md-6 text-right">
-                          <strong class="text-black">$230.00</strong>
-                        </div>
-                      </div> -->
+              
         
-                      <div class="row">
-                        <div class="col-md-12">
-                          <button class="btn btn-black btn-lg py-3 btn-block" onclick="window.location='checkout.html'">Proceed To Checkout</button>
-                        </div>
-                      </div>
-                    </div>
+		  <div class="row">
+			<div class="col-md-12">
+			  <button class="btn btn-black btn-lg py-3 btn-block" onclick="proceedToCheckout()">Proceed To Checkout</button>
+			</div>
+		  </div>
+                    <!-- </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
+          </div> -->
 		  
 		
 
@@ -193,35 +116,14 @@
 		<footer class="footer-section">
 			<div class="container relative">
 
-				<div class="sofa-img">
+				<!-- <div class="sofa-img">
 					<img src="images/sofa.png" alt="Image" class="img-fluid">
-				</div>
+				</div> -->
 				<div class="col-md-6">
 					<button class="btn btn-outline-black btn-sm btn-block">Continue Shopping</button>
 				  </div>
 				</div>
-				<!-- <div class="row">
-					<div class="col-lg-8">
-						<div class="subscription-form">
-							<h3 class="d-flex align-items-center"><span class="me-1"><img src="images/envelope-outline.svg" alt="Image" class="img-fluid"></span><span>Subscribe to Newsletter</span></h3>
-
-							<form action="#" class="row g-3">
-								<div class="col-auto">
-									<input type="text" class="form-control" placeholder="Enter your name">
-								</div>
-								<div class="col-auto">
-									<input type="email" class="form-control" placeholder="Enter your email">
-								</div>
-								<div class="col-auto">
-									<button class="btn btn-primary">
-										<span class="fa fa-paper-plane"></span>
-									</button>
-								</div>
-							</form> -->
-
-						<!-- </div>
-					</div>
-				</div> --><br>
+				<br>
 
 				<div class="row g-5 mb-5">
 					<div class="col-lg-4">
@@ -296,8 +198,57 @@
 			</div>
 		</footer>
 		<!-- End Footer Section -->	
-
-
+		<script>
+			// Function to render the cart items from localStorage
+			function renderCart() {
+				const cartItemsContainer = document.getElementById('cart-items');
+				cartItemsContainer.innerHTML = ''; // Clear the current cart display
+		
+				// Get cart from localStorage or set it to an empty array
+				const cart = JSON.parse(localStorage.getItem('cart')) || [];
+		
+				cart.forEach(item => {
+					const total = item.price * item.quantity;
+					const row = `
+						<tr>
+							<td><img src="${item.image}" class="img-fluid" style="width: 50px;"></td>
+							<td>${item.name}</td>
+							<td>${item.price}</td>
+							<td>${item.quantity}</td>
+							<td>${total}</td>
+							<td><button class="btn btn-danger" onclick="removeFromCart('${item.name}')">Remove</button></td>
+							<td><button class="btn btn-primary" onclick="buyNow('${item.name}', ${item.price}, ${item.quantity})">Buy Now</button></td> <!-- Buy Now button -->
+						</tr>
+					`;
+					cartItemsContainer.insertAdjacentHTML('beforeend', row);
+				});
+			}
+		
+			// Function to remove product from cart
+			function removeFromCart(name) {
+				let cart = JSON.parse(localStorage.getItem('cart')) || [];
+				cart = cart.filter(item => item.name !== name); // Remove the item
+				localStorage.setItem('cart', JSON.stringify(cart)); // Update localStorage
+				renderCart(); // Re-render the cart
+			}
+		
+			// Function to calculate the total price of items in the cart
+			function calculateTotal(cart) {
+				return cart.reduce((total, item) => total + (item.price * item.quantity), 0);
+			}
+		
+			// Function to handle proceeding to checkout for a specific product
+			function buyNow(name, price, quantity) {
+				// Prepare URL parameters
+				const itemsParam = `itemName0=${encodeURIComponent(name)}&itemPrice0=${price}&itemQuantity0=${quantity}`;
+				// Redirect to checkout.html with the selected product details
+				window.location.href = `checkout.html?${itemsParam}`;
+			}
+		
+			// Call renderCart when the page loads
+			document.addEventListener('DOMContentLoaded', renderCart);
+		</script>
+		
 		<script src="js/bootstrap.bundle.min.js"></script>
 		<script src="js/tiny-slider.js"></script>
 		<script src="js/custom.js"></script>
